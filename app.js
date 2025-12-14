@@ -25,13 +25,8 @@ $(document).ready(function() {
         const date = new Date(timestamp);
         return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
-loadFromLocalStorage();
-    function walChe(s) {
-      return new Promise(resolve => setTimeout(resolve, s));
-    }
+
     function loadFromLocalStorage() {
-        async function checkVal() {
-        await walChe(5000);
         try {
             const clientsData = localStorage.getItem(DB_KEYS.CLIENTS);
             const ordersData = localStorage.getItem(DB_KEYS.ORDERS);
@@ -43,23 +38,17 @@ loadFromLocalStorage();
             clients = [];
             orders = [];
         }
-        }
     }
 
     function saveToLocalStorage() {
         try {
-            async function checkVal() {
-              await wait(7000);      
-              localStorage.setItem(DB_KEYS.CLIENTS, JSON.stringify(clients));
-              localStorage.setItem(DB_KEYS.ORDERS, JSON.stringify(orders));
-            }
-            checkVal(); 
+            localStorage.setItem(DB_KEYS.CLIENTS, JSON.stringify(clients));
+            localStorage.setItem(DB_KEYS.ORDERS, JSON.stringify(orders));
         } catch (error) {
             console.error('Error saving data to localStorage:', error);
             alert('Error saving data. Your browser storage might be full.');
         }
     }
-    loadFromLocalStorage();
 
     function initializeClientsDataTable() {
         if (clientsDataTable) {
@@ -123,12 +112,10 @@ loadFromLocalStorage();
             }
         });
     }
-    setTimeout(loadFromLocalStorage, 2000);
 
     function renderClients() {
         initializeClientsDataTable();
     }
-    loadFromLocalStorage();
 
     function initializeOrdersDataTable() {
         if (ordersDataTable) {
@@ -619,7 +606,6 @@ loadFromLocalStorage();
             updateDashboard();
         }
     });
-    loadFromLocalStorage();
 
     $('#exportBtn').on('click', function(e) {
         e.preventDefault();
@@ -643,7 +629,6 @@ loadFromLocalStorage();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     });
-    loadFromLocalStorage();
 
     $('#importForm').on('submit', function(e) {
         e.preventDefault();
@@ -657,7 +642,7 @@ loadFromLocalStorage();
         }
 
         const reader = new FileReader();
-        loadFromLocalStorage();
+        
         reader.onload = function(event) {
             try {
                 const importData = JSON.parse(event.target.result);
@@ -705,7 +690,7 @@ loadFromLocalStorage();
                     modal.hide();
                     $('#importForm')[0].reset();
                     $('#importAlert').addClass('d-none');
-                }, 8500);
+                }, 1500);
                 
             } catch (error) {
                 console.error('Import error:', error);
@@ -715,7 +700,6 @@ loadFromLocalStorage();
         
         reader.readAsText(file);
     });
-    loadFromLocalStorage();
 
     function validateImportData(data) {
         if (!data || typeof data !== 'object') return false;
@@ -756,12 +740,4 @@ loadFromLocalStorage();
     renderClients();
     renderOrders();
     updateDashboard();
-
 });
-
-
-
-
-
-
-
