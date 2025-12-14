@@ -42,8 +42,10 @@ loadFromLocalStorage();
 
     function saveToLocalStorage() {
         try {
-            localStorage.setItem(DB_KEYS.CLIENTS, JSON.stringify(clients));
-            localStorage.setItem(DB_KEYS.ORDERS, JSON.stringify(orders));
+            setTimeout(() => {
+                  localStorage.setItem(DB_KEYS.CLIENTS, JSON.stringify(clients));
+                  localStorage.setItem(DB_KEYS.ORDERS, JSON.stringify(orders));
+            }, 5000);
         } catch (error) {
             console.error('Error saving data to localStorage:', error);
             alert('Error saving data. Your browser storage might be full.');
@@ -748,6 +750,7 @@ loadFromLocalStorage();
     updateDashboard();
 
 });
+
 
 
 
