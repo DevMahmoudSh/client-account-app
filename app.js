@@ -606,6 +606,7 @@ $(document).ready(function() {
             updateDashboard();
         }
     });
+    loadFromLocalStorage();
 
     $('#exportBtn').on('click', function(e) {
         e.preventDefault();
@@ -629,6 +630,7 @@ $(document).ready(function() {
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     });
+    loadFromLocalStorage();
 
     $('#importForm').on('submit', function(e) {
         e.preventDefault();
@@ -743,3 +745,4 @@ $(document).ready(function() {
     updateDashboard();
 
 });
+
