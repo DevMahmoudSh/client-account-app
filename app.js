@@ -26,7 +26,12 @@ $(document).ready(function() {
         return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
 loadFromLocalStorage();
+    function walChe(s) {
+      return new Promise(resolve => setTimeout(resolve, s));
+    }
     function loadFromLocalStorage() {
+        async function checkVal() {
+        await walChe(5000);
         try {
             const clientsData = localStorage.getItem(DB_KEYS.CLIENTS);
             const ordersData = localStorage.getItem(DB_KEYS.ORDERS);
@@ -37,6 +42,7 @@ loadFromLocalStorage();
             console.error('Error loading data from localStorage:', error);
             clients = [];
             orders = [];
+        }
         }
     }
 
@@ -752,6 +758,7 @@ loadFromLocalStorage();
     updateDashboard();
 
 });
+
 
 
 
