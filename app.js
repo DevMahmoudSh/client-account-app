@@ -642,7 +642,7 @@ $(document).ready(function() {
         }
 
         const reader = new FileReader();
-        
+        loadFromLocalStorage();
         reader.onload = function(event) {
             try {
                 const importData = JSON.parse(event.target.result);
@@ -700,6 +700,7 @@ $(document).ready(function() {
         
         reader.readAsText(file);
     });
+    loadFromLocalStorage();
 
     function validateImportData(data) {
         if (!data || typeof data !== 'object') return false;
@@ -740,4 +741,5 @@ $(document).ready(function() {
     renderClients();
     renderOrders();
     updateDashboard();
+
 });
