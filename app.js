@@ -25,7 +25,7 @@ $(document).ready(function() {
         const date = new Date(timestamp);
         return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
-
+loadFromLocalStorage();
     function loadFromLocalStorage() {
         try {
             const clientsData = localStorage.getItem(DB_KEYS.CLIENTS);
@@ -49,6 +49,7 @@ $(document).ready(function() {
             alert('Error saving data. Your browser storage might be full.');
         }
     }
+    loadFromLocalStorage();
 
     function initializeClientsDataTable() {
         if (clientsDataTable) {
@@ -116,6 +117,7 @@ $(document).ready(function() {
     function renderClients() {
         initializeClientsDataTable();
     }
+    loadFromLocalStorage();
 
     function initializeOrdersDataTable() {
         if (ordersDataTable) {
@@ -745,4 +747,5 @@ $(document).ready(function() {
     updateDashboard();
 
 });
+
 
