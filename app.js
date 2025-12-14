@@ -113,6 +113,7 @@ loadFromLocalStorage();
             }
         });
     }
+    setTimeout(loadFromLocalStorage, 2000);
 
     function renderClients() {
         initializeClientsDataTable();
@@ -747,5 +748,6 @@ loadFromLocalStorage();
     updateDashboard();
 
 });
+
 
 
