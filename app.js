@@ -695,7 +695,7 @@ loadFromLocalStorage();
                     modal.hide();
                     $('#importForm')[0].reset();
                     $('#importAlert').addClass('d-none');
-                }, 1500);
+                }, 8500);
                 
             } catch (error) {
                 console.error('Import error:', error);
@@ -748,6 +748,7 @@ loadFromLocalStorage();
     updateDashboard();
 
 });
+
 
 
 
